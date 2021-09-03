@@ -8,6 +8,11 @@
     "serve": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
+  "compilerOptions": {
+    "types": [
+      "vite-plugin-pwa/client"
+    ]
+  },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.11",
     "@tsconfig/svelte": "^2.0.1",
@@ -16,6 +21,12 @@
     "svelte-preprocess": "^4.7.2",
     "tslib": "^2.2.0",
     "typescript": "^4.3.2",
-    "vite": "^2.5.1"
+    "vite": "^2.5.1",
+    "vite-plugin-pwa": "^0.11.2",
+    "vite-plugin-virtual": "^0.1.1",
+    "workbox-window": "^6.2.4"
+  },
+  "dependencies": {
+    "sass": "^1.39.0"
   }
 }
