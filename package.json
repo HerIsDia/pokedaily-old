@@ -27,6 +27,7 @@
     "workbox-window": "^6.2.4"
   },
   "dependencies": {
+    "pokenode-ts": "^1.7.5",
     "sass": "^1.39.0"
   }
 }
