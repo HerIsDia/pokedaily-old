@@ -8,20 +8,16 @@ export const getPokemonData = async (id: number) => {
   return { pokemon, species };
 };
 
-export const getPokemonList = async (limit: number) => {
-  return await api.pokemon.listPokemons(0, limit);
-};
-
-export const getPokemonAbilities = async (id?: number) => {
+export const getPokemonNature = async (id?: number) => {
   if (!id) {
-    return await api.pokemon.listAbilities();
+    return await api.pokemon.listNatures();
   }
-  return api.pokemon.getAbilityById(id);
+  return api.pokemon.getNatureById(id);
 };
 
-export const getPokemonTypes = async (id?: number) => {
-  if (!id) {
+export const getPokemonTypes = async (name?: string) => {
+  if (!name) {
     return await api.pokemon.listTypes();
   }
-  return api.pokemon.getTypeById(id);
+  return api.pokemon.getTypeByName(name);
 };
