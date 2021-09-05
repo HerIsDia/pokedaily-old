@@ -23,9 +23,6 @@
       if (rename.length > 16) {
         rename = rename.slice(0, 16);
       }
-      if (rename.length < 1) {
-        rename = PokemonName;
-      }
       setRename(rename);
     }
 
@@ -45,7 +42,9 @@
   <div class="infos">
     <Infos type="leveling" text="Level {data.pokemonOfTheDay.level}" />
     <Infos type="nature" text={data.pokemonOfTheDay.fetched.nature.names.find(name => name.language.name === userLang).name}/>
-      {#each types as type}
+  </div>
+  <div class="types">
+    {#each types as type}
         <Infos type="type" text={type.names.find(name => name.language.name === userLang).name} pokemonType={type.name.toLowerCase()}/>
       {/each}
   </div>
@@ -69,9 +68,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    .infos {
+    .infos, .types {
       display: flex;
       flex-direction: row;
+    }
+    .types {
+      font-size: 12px;
     }
   }
 </style>

@@ -81,8 +81,10 @@ export const script = async () => {
       history: history,
     };
     localStorage.setItem('data', JSON.stringify(newData));
+    sessionStorage.setItem('done', '0');
     return newData;
   } else {
+    sessionStorage.setItem('done', '1');
     return LocalData;
   }
 };
