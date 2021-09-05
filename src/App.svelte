@@ -2,13 +2,22 @@
     import Pokemon from "./lib/components/Pokemon.svelte";
     import { script } from "./lib/scripts/script";
     import Fa from 'svelte-fa';
-    import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+    import { faSpinner, faCalendar, faHistory, faBook, faHeart } from "@fortawesome/free-solid-svg-icons";
     import { fly } from 'svelte/transition';
     const allData = script();
+    let resultType: 'pokemon' | 'history' | 'pokedex' = 'pokemon';
 </script>
 
 <nav class="navbar">
-
+    {#if resultType != 'pokemon'}
+            <a href="#pokemon" on:click={() => resultType = 'pokemon'}><span><Fa icon={faCalendar} /><span>Pokémon</span></span></a>
+    {/if}
+    {#if resultType != 'history'}
+    <a href="#history" on:click={() => resultType = 'history'}><span><Fa icon={faHistory} /><span>History</span></span></a>
+    {/if}
+    {#if resultType != 'pokedex'}
+    <a href="#pokedex" on:click={() => resultType = 'pokedex'}><span><Fa icon={faBook} /><span>Pokédex</span></span></a>
+    {/if}
 </nav>
 
 <main>
@@ -19,12 +28,18 @@
         <h2>Loading...</h2>
       </div>
       {:then data}
-      <div class="pokemon" transition:fly="{{ y: 200, duration: sessionStorage.getItem('done') == "1" ? 0 : 2000 }}">
-        <Pokemon data={data} />
+      <div class="result" transition:fly="{{ y: 200, duration: sessionStorage.getItem('done') == "1" ? 0 : 2000 }}">
+        {#if resultType == 'pokemon'}
+            <Pokemon data={data} />
+        {/if}
       </div> 
       {/await}
+      <footer>
+        <p>Made with <Fa icon={faHeart} /> by <a href="https://diamant.dev">diamant</a>.</p>
+        <p>Pokedaily is not affiliated with Nintendo or Gamefreak Inc. - Pokémon and Pokémon character names are trademarks of Nintendo.</p>
+        </footer>
   </div>
-</main> 
+</main>
 
 <style lang="scss">
     :global(*) {
@@ -42,13 +57,54 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 100vh;
+        min-height: 85vh;
         overflow: hidden;
         .loading {
             text-align: center;
         }
     }
 
-    
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        overflow: hidden;
+        width: 100%;
+        padding: 20px;
+        font-size: 24px;
+        a {
+            transform: skewX(10deg);
+            color: rgb(24, 24, 24);
+            text-decoration: none;
+            border: 0.1ch solid rgb(26, 26, 26);
+            color: black;
+            padding: 10px;
+            transition: all 0.5s ease-in-out;
+            box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 6px 0px;
+            &:hover {
+                background: rgb(26, 26, 26);
+                box-shadow: rgba(0, 0, 0, 0.3) 4px 4px 0px 0px;
+                color: white;
+            }
+            span {
+                transform: skewX(-10deg);
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                span {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+
+    footer {
+        margin-top: 50px;
+        text-align: center;
+        opacity: 0.8;
+        font-size: 12px;
+        a {
+            color: #b69bc9
+        }
+    }
 
 </style>

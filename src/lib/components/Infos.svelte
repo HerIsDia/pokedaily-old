@@ -11,6 +11,7 @@
 <style lang="scss">
     div {
         transform: skewX(20deg);
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 0px 0px;
         width: auto;
         margin: 5px;
         .text {
