@@ -3,7 +3,7 @@ import { getPokemonNature, getPokemonData, getPokemonTypes } from './pokeAPI';
 
 const version = '2.0';
 
-export interface Data {
+export interface AppData {
   _lastVersion: string;
   _lastDate: number;
   pokemonOfTheDay: PokemonData;
@@ -29,8 +29,8 @@ interface HistoryData {
 }
 
 export const script = async () => {
-  const LocalData: Data | undefined = localStorage.getItem('data')
-    ? (JSON.parse(localStorage.getItem('data')!) as Data)
+  const LocalData: AppData | undefined = localStorage.getItem('data')
+    ? (JSON.parse(localStorage.getItem('data')!) as AppData)
     : undefined;
   const dateNow = Date.now() - (Date.now() % 86400000);
   let lastDay = LocalData ? LocalData._lastDate : 0;
@@ -63,7 +63,7 @@ export const script = async () => {
     }
     pokemonOfTheDay = {
       id: randomPokemon,
-      rename: fetchedNewPokemon.pokemon.name,
+      rename: '',
       natureID: randomNature,
       level: Math.floor(Math.random() * 100),
       isShiny: Math.random() < 1 / 690,
@@ -74,7 +74,7 @@ export const script = async () => {
       },
     };
     lastDay = dateNow;
-    const newData: Data = {
+    const newData: AppData = {
       _lastVersion: version,
       _lastDate: lastDay,
       pokemonOfTheDay: pokemonOfTheDay,
@@ -85,4 +85,16 @@ export const script = async () => {
   } else {
     return LocalData;
   }
+};
+
+export const setRename = (rename: string) => {
+  const LocalData: AppData | undefined = localStorage.getItem('data')
+    ? (JSON.parse(localStorage.getItem('data')!) as AppData)
+    : undefined;
+  if (!LocalData) return;
+  const newData: AppData = {
+    ...LocalData,
+    pokemonOfTheDay: { ...LocalData.pokemonOfTheDay, rename: rename },
+  };
+  localStorage.setItem('data', JSON.stringify(newData));
 };

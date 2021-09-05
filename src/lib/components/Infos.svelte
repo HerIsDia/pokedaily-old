@@ -3,7 +3,7 @@
     type Type = 'leveling' | 'nature' | 'type';
     export let type: Type;
     type PokemonType = 'normal' | 'fighting' | 'flying' | 'poison' | 'ground' | 'rock' | 'bug' | 'ghost' | 'steel' | 'fire' | 'water' | 'grass' | 'electric' | 'psychic' | 'ice' | 'dragon' | 'dark' | 'fairy' | "";
-    export let pokemonType: PokemonType = "";
+    export let pokemonType: PokemonType | string = "";
 </script>
 
 <div class="{type} {pokemonType}"><p class=text>{text}</p></div>
@@ -12,6 +12,7 @@
     div {
         transform: skewX(20deg);
         width: auto;
+        margin: 5px;
         .text {
             padding: 2px 10px;
             transform: skewX(-20deg);
