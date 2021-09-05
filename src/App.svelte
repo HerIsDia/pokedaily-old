@@ -3,7 +3,8 @@
   import History from './lib/components/History.svelte';
   import Pokedex from './lib/components/Pokedex.svelte';
   import { script } from './lib/scripts/script';
-  import Fa from 'svelte-fa';
+  import Fa from 'svelte-fa/src/fa.svelte';
+  import { useRegisterSW } from 'virtual:pwa-register/svelte';
   import {
     faSpinner,
     faCalendar,
@@ -20,6 +21,22 @@
       ? 'pokedex'
       : 'pokemon' || 'pokemon';
   console.log(window.location.hash.slice(1));
+
+  const buildDate = '__DATE__';
+  const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
+    onRegistered(swr) {
+      console.log(`SW registered: ${swr}`);
+    },
+    onRegisterError(error) {
+      console.log('SW registration error', error);
+    },
+  });
+
+  function close() {
+    offlineReady.set(false);
+    needRefresh.set(false);
+  }
+  $: toast = $offlineReady || $needRefresh;
 </script>
 
 <nav class="navbar">
@@ -79,6 +96,17 @@
         Pokedaily is not affiliated with Nintendo or Gamefreak Inc. - Pokémon
         and Pokémon character names are trademarks of Nintendo.
       </p>
+      {#if $offlineReady}
+        <p>App ready to work offline</p>
+      {:else}
+        <p>
+          New content available. {#if $needRefresh}
+            <a href="#pokemon" on:click={() => updateServiceWorker(true)}>
+              Click here
+            </a> to update.
+          {/if}
+        </p>
+      {/if}
     </footer>
   </div>
 </main>
