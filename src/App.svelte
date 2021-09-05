@@ -48,6 +48,11 @@
     box-sizing: border-box;
     }
 
+    :global(::selection) {
+        background-color: rgb(24, 24, 24);
+        color: white;
+    }
+
     :global(body) {
         font-family: 'Open Sans', sans-serif;
     }
@@ -77,21 +82,33 @@
             text-decoration: none;
             border: 0.1ch solid rgb(26, 26, 26);
             color: black;
-            padding: 10px;
+            padding: 20px;
             transition: all 0.5s ease-in-out;
             box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 6px 0px;
             &:hover {
                 background: rgb(26, 26, 26);
                 box-shadow: rgba(0, 0, 0, 0.3) 4px 4px 0px 0px;
                 color: white;
+                &>span span {
+                    opacity: 1;
+                    transform: translate(8px, 50px) skewX(10deg);
+                    color: black;
+                }
             }
             span {
+                text-align: center;
                 transform: skewX(-10deg);
                 display: flex;
                 align-items: center;
                 flex-direction: column;
+                font-size: 24px;
                 span {
+                    transition: all 0.5s ease-in-out;
                     font-size: 12px;
+                    transform: skewX(10deg);
+                    position:absolute;
+                    opacity: 0;
+                    color: white;
                 }
             }
         }
