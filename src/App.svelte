@@ -1,6 +1,7 @@
 <script lang="ts">
   import Pokemon from './lib/components/Pokemon.svelte';
   import History from './lib/components/History.svelte';
+  import Pokedex from './lib/components/Pokedex.svelte';
   import { script } from './lib/scripts/script';
   import Fa from 'svelte-fa';
   import {
@@ -12,7 +13,13 @@
   } from '@fortawesome/free-solid-svg-icons';
   import { fly } from 'svelte/transition';
   const allData = script();
-  let resultType: 'pokemon' | 'history' | 'pokedex' = 'pokemon';
+  let resultType: 'pokemon' | 'history' | 'pokedex' =
+    window.location.hash.slice(1) == 'history'
+      ? 'history'
+      : window.location.hash.slice(1) == 'pokedex'
+      ? 'pokedex'
+      : 'pokemon' || 'pokemon';
+  console.log(window.location.hash.slice(1));
 </script>
 
 <nav class="navbar">
@@ -59,7 +66,7 @@
         {:else if resultType == 'history'}
           <History {data} />
         {:else if resultType == 'pokedex'}
-          <p>Pokedex</p>
+          <Pokedex {data} />
         {/if}
       </div>
     {/await}

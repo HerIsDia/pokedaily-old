@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { AppData } from '../scripts/script';
+  import { fade } from 'svelte/transition';
   import Infos from './Infos.svelte';
   export let data: AppData;
   const sortedData = data.history.sort((a, b) => b._date - a._date);
@@ -13,13 +14,15 @@
 </script>
 
 <div class="history">
-  {#each sortedData as pokemon}
-    <div class="pokemon">
+  {#each sortedData as pokemon, id}
+    <div class="pokemon" in:fade={{ duration: 500, delay: id * 100 }}>
       <div class="left">
         <img
-          src="./images/{pokemon.pokemon.id}{pokemon.pokemon.isShiny
-            ? 'S'
-            : ''}.png"
+          src="./images/{pokemon.pokemon.id < 100
+            ? pokemon.pokemon.id < 10
+              ? `00${pokemon.pokemon.id}`
+              : `0${pokemon.pokemon.id}`
+            : `${pokemon.pokemon.id}`}{pokemon.pokemon.isShiny ? 'S' : ''}.png"
           alt={pokemon.pokemon.rename}
         />
       </div>
@@ -42,6 +45,9 @@
             ).name}
           />
           <Infos type="nature" text="Level {pokemon.pokemon.level}" />
+          {#if pokemon.pokemon.isShiny}
+            <Infos type="shiny" text="✨" />
+          {/if}
         </div>
       </div>
     </div>
