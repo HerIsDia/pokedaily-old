@@ -1,7 +1,7 @@
 import type { Nature, Pokemon, PokemonSpecies, Type } from 'pokenode-ts';
 import { getPokemonNature, getPokemonData, getPokemonTypes } from './pokeAPI';
 
-const version = '2.0';
+const version = '2.0.1';
 
 export interface AppData {
   _lastVersion: string;
@@ -34,8 +34,10 @@ export const script = async () => {
     : undefined;
   const dateNow = Date.now() - (Date.now() % 86400000);
   let lastDay = LocalData ? LocalData._lastDate : 0;
+  const online = navigator.onLine;
   const difference =
-    dateNow - lastDay >= 86400000 || LocalData._lastVersion != version;
+    (dateNow - lastDay >= 86400000 || LocalData._lastVersion != version) &&
+    online;
   let pokemonOfTheDay = LocalData ? LocalData.pokemonOfTheDay : undefined;
   let history = LocalData ? LocalData.history : [];
   if (difference) {

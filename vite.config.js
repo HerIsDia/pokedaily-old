@@ -7,12 +7,17 @@ export default defineConfig({
   plugins: [
     svelte(),
     VitePWA({
-      includeAssets: ['robots.txt', 'apple-touch-icon.png'],
+      includeAssets: [
+        'robots.txt',
+        'apple-touch-icon.png',
+        'images/*.png',
+        'favicon.ico',
+      ],
       manifest: {
         name: 'Pokedaily',
         short_name: 'What Pokémon are you today ?',
         description: 'Telling You What Pokemon You Are Today',
-        theme_color: '#b69bc9',
+        theme_color: '#181818',
         icons: [
           {
             src: 'android-chrome-192x192.png',
