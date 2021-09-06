@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { AppData } from '../scripts/script';
-  import { fade } from 'svelte/transition';
   export let data: AppData;
   const allPokemons = [
     data.pokemonOfTheDay.id,

@@ -3,7 +3,7 @@
   import History from './lib/components/History.svelte';
   import Pokedex from './lib/components/Pokedex.svelte';
   import { script } from './lib/scripts/script';
-  import Fa from 'svelte-fa/src/fa.svelte';
+  import Fa from 'svelte-fa';
   import { useRegisterSW } from 'virtual:pwa-register/svelte';
   import {
     faSpinner,
@@ -21,9 +21,7 @@
       ? 'pokedex'
       : 'pokemon' || 'pokemon';
   console.log(window.location.hash.slice(1));
-
-  const buildDate = '__DATE__';
-  const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
+  const { offlineReady, needRefresh } = useRegisterSW({
     onRegistered(swr) {
       console.log(`SW registered: ${swr}`);
     },
