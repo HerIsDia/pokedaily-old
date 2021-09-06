@@ -7,7 +7,7 @@
   ];
   const allPokemonFounds = [...new Set(allPokemons)];
   let pokemons: number[] = [];
-  for (let index = 0; index < 897; index++) {
+  for (let index = 0; index < 898; index++) {
     pokemons.push(index + 1);
   }
 

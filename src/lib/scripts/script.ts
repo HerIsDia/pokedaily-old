@@ -39,7 +39,7 @@ export const script = async () => {
   let pokemonOfTheDay = LocalData ? LocalData.pokemonOfTheDay : undefined;
   let history = LocalData ? LocalData.history : [];
   if (difference) {
-    const randomPokemon = Math.floor(Math.random() * 896) + 1;
+    const randomPokemon = Math.floor(Math.random() * 897) + 1;
     const fetchedNewPokemon = await getPokemonData(randomPokemon);
     const randomNature = Math.floor(Math.random() * 24) + 1;
     const fetchedNewNature: Nature = (await getPokemonNature(
