@@ -3,7 +3,7 @@
   import History from './lib/components/History.svelte';
   import Pokedex from './lib/components/Pokedex.svelte';
   import { script } from './lib/scripts/script';
-  import Fa from 'svelte-fa';
+  import Fa from 'svelte-fa/src/fa.svelte';
   import { useRegisterSW } from 'virtual:pwa-register/svelte';
   import {
     faSpinner,
