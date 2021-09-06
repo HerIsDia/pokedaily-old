@@ -7,6 +7,9 @@ What pokemon are you today ?
 [![GitHub stars](https://img.shields.io/github/stars/diamantdev/pokedaily?color=%23b69bc9&style=for-the-badge)](https://github.com/diamantdev/pokedaily/stargazers)
 ![Website](https://img.shields.io/website?color=%23b69bc9&style=for-the-badge&url=https%3A%2F%2Fpokedaily.diams.app)
 
+
+#### [Upvote it on ProductHunt !](https://www.producthunt.com/posts/pokedaily)
+
 ## Features
 
 - Telling what Pokemon (with nature and level) are you today. (Maybe you can be a shiny)
