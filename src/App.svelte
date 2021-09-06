@@ -96,17 +96,6 @@
         Pokedaily is not affiliated with Nintendo or Gamefreak Inc. - Pokémon
         and Pokémon character names are trademarks of Nintendo.
       </p>
-      {#if $offlineReady}
-        <p>App ready to work offline</p>
-      {:else}
-        <p>
-          New content available. {#if $needRefresh}
-            <a href="#pokemon" on:click={() => updateServiceWorker(true)}>
-              Click here
-            </a> to update.
-          {/if}
-        </p>
-      {/if}
     </footer>
   </div>
 </main>
