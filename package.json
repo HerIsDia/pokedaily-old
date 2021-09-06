@@ -18,6 +18,7 @@
     "@tsconfig/svelte": "^2.0.1",
     "svelte": "^3.37.0",
     "svelte-check": "^2.1.0",
+    "svelte-fa": "^2.3.3",
     "svelte-preprocess": "^4.7.2",
     "tslib": "^2.2.0",
     "typescript": "^4.3.2",
@@ -27,8 +28,8 @@
     "workbox-window": "^6.2.4"
   },
   "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "pokenode-ts": "^1.7.5",
-    "sass": "^1.39.0",
-    "svelte-awesome": "^2.3.2"
+    "sass": "^1.39.0"
   }
 }

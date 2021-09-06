@@ -3,7 +3,7 @@
   import History from './lib/components/History.svelte';
   import Pokedex from './lib/components/Pokedex.svelte';
   import { script } from './lib/scripts/script';
-  import Icon from 'svelte-awesome';
+  import Fa from 'svelte-fa';
   import { useRegisterSW } from 'virtual:pwa-register/svelte';
   import {
     faSpinner,
@@ -21,7 +21,7 @@
       ? 'pokedex'
       : 'pokemon' || 'pokemon';
   console.log(window.location.hash.slice(1));
-  useRegisterSW({
+  const { offlineReady, needRefresh } = useRegisterSW({
     onRegistered(swr) {
       console.log(`SW registered: ${swr}`);
     },
@@ -29,22 +29,28 @@
       console.log('SW registration error', error);
     },
   });
+
+  function close() {
+    offlineReady.set(false);
+    needRefresh.set(false);
+  }
+  $: toast = $offlineReady || $needRefresh;
 </script>
 
 <nav class="navbar">
   {#if resultType != 'pokemon'}
     <a href="#pokemon" on:click={() => (resultType = 'pokemon')}
-      ><span><Icon data={faCalendar} /><span>Pokémon</span></span></a
+      ><span><Fa icon={faCalendar} /><span>Pokémon</span></span></a
     >
   {/if}
   {#if resultType != 'history'}
     <a href="#history" on:click={() => (resultType = 'history')}
-      ><span><Icon data={faHistory} /><span>History</span></span></a
+      ><span><Fa icon={faHistory} /><span>History</span></span></a
     >
   {/if}
   {#if resultType != 'pokedex'}
     <a href="#pokedex" on:click={() => (resultType = 'pokedex')}
-      ><span><Icon data={faBook} /><span>Pokédex</span></span></a
+      ><span><Fa icon={faBook} /><span>Pokédex</span></span></a
     >
   {/if}
 </nav>
@@ -59,7 +65,7 @@
           duration: sessionStorage.getItem('done') == '1' ? 0 : 2000,
         }}
       >
-        <Icon data={faSpinner} size="3x" spin />
+        <Fa icon={faSpinner} size="3x" spin />
         <h2>Loading...</h2>
       </div>
     {:then data}
@@ -81,7 +87,7 @@
     {/await}
     <footer>
       <p>
-        Made with <Icon data={faHeart} /> by
+        Made with <Fa icon={faHeart} /> by
         <a href="https://diamant.dev">diamant</a>.
       </p>
       <p>
@@ -142,7 +148,7 @@
         color: white;
         & > span span {
           opacity: 1;
-          transform: translate(7px, 40px) skewX(10deg);
+          transform: translate(8px, 50px) skewX(10deg);
           color: black;
         }
       }
