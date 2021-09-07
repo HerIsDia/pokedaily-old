@@ -1,12 +1,12 @@
 {
   "name": "pokedaily",
-  "version": "0.0.0",
+  "version": "2.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
     "serve": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json"
+    "check": "svelte-check --tsconfig ./tsconfig.json --fail-on-warnings --fail-on-hints"
   },
   "compilerOptions": {
     "types": [
@@ -31,5 +31,13 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "pokenode-ts": "^1.7.5",
     "sass": "^1.39.0"
+  },
+  "author": {
+    "email": "git@diamant.dev",
+    "name": "Diamant"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/diamantdev/pokedaily"
   }
 }
