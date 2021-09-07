@@ -21,7 +21,7 @@
       ? 'pokedex'
       : 'pokemon' || 'pokemon';
   console.log(window.location.hash.slice(1));
-  const { offlineReady, needRefresh } = useRegisterSW({
+  useRegisterSW({
     onRegistered(swr) {
       console.log(`SW registered: ${swr}`);
     },
@@ -29,12 +29,6 @@
       console.log('SW registration error', error);
     },
   });
-
-  function close() {
-    offlineReady.set(false);
-    needRefresh.set(false);
-  }
-  $: toast = $offlineReady || $needRefresh;
 </script>
 
 <nav class="navbar">
