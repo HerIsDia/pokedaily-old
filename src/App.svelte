@@ -29,9 +29,12 @@
       console.log('SW registration error', error);
     },
   });
+  const dark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : '';
 </script>
 
-<div class="app dark">
+<div class="app {dark}">
   <nav class="navbar">
     {#if resultType != 'pokemon'}
       <a href="#pokemon" on:click={() => (resultType = 'pokemon')}
