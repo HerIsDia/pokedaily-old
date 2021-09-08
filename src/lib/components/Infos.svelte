@@ -38,16 +38,16 @@
     }
     &.shiny {
       background: gold;
-      color: black;
-      border: 0.1ch solid rgb(26, 26, 26);
+      color: var(--secondary);
+      border: 0.1ch solid var(--primary);
     }
     &.leveling {
-      background: rgb(26, 26, 26);
-      color: white;
+      background: var(--primary);
+      color: var(--secondary);
     }
     &.nature {
-      border: 0.1ch solid rgb(26, 26, 26);
-      color: black;
+      border: 0.1ch solid var(--primary);
+      color: var(--primary);
     }
     &.type {
       &.normal {
