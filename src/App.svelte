@@ -29,68 +29,73 @@
       console.log('SW registration error', error);
     },
   });
+  const dark = window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : '';
 </script>
 
-<nav class="navbar">
-  {#if resultType != 'pokemon'}
-    <a href="#pokemon" on:click={() => (resultType = 'pokemon')}
-      ><span><Fa icon={faCalendar} /><span>Pokémon</span></span></a
-    >
-  {/if}
-  {#if resultType != 'history'}
-    <a href="#history" on:click={() => (resultType = 'history')}
-      ><span><Fa icon={faHistory} /><span>History</span></span></a
-    >
-  {/if}
-  {#if resultType != 'pokedex'}
-    <a href="#pokedex" on:click={() => (resultType = 'pokedex')}
-      ><span><Fa icon={faBook} /><span>Pokédex</span></span></a
-    >
-  {/if}
-</nav>
+<div class="app {dark}">
+  <nav class="navbar">
+    {#if resultType != 'pokemon'}
+      <a href="#pokemon" on:click={() => (resultType = 'pokemon')}
+        ><span><Fa icon={faCalendar} /><span>Pokémon</span></span></a
+      >
+    {/if}
+    {#if resultType != 'history'}
+      <a href="#history" on:click={() => (resultType = 'history')}
+        ><span><Fa icon={faHistory} /><span>History</span></span></a
+      >
+    {/if}
+    {#if resultType != 'pokedex'}
+      <a href="#pokedex" on:click={() => (resultType = 'pokedex')}
+        ><span><Fa icon={faBook} /><span>Pokédex</span></span></a
+      >
+    {/if}
+  </nav>
 
-<main>
-  <div class="dailyPokemon">
-    {#await allData}
-      <div
-        class="loading"
-        transition:fly={{
-          y: -200,
-          duration: sessionStorage.getItem('done') == '1' ? 0 : 2000,
-        }}
-      >
-        <Fa icon={faSpinner} size="3x" spin />
-        <h2>Loading...</h2>
-      </div>
-    {:then data}
-      <div
-        class="result"
-        transition:fly={{
-          y: 200,
-          duration: sessionStorage.getItem('done') == '1' ? 0 : 2000,
-        }}
-      >
-        {#if resultType == 'pokemon'}
-          <Pokemon {data} />
-        {:else if resultType == 'history'}
-          <History {data} />
-        {:else if resultType == 'pokedex'}
-          <Pokedex {data} />
-        {/if}
-      </div>
-    {/await}
-    <footer>
-      <p>
-        Made with <Fa icon={faHeart} /> by
-        <a href="https://diamant.dev">diamant</a>.
-      </p>
-      <p>
-        Pokedaily is not affiliated with Nintendo or Gamefreak Inc. - Pokémon
-        and Pokémon character names are trademarks of Nintendo.
-      </p>
-    </footer>
-  </div>
-</main>
+  <main>
+    <div class="dailyPokemon">
+      {#await allData}
+        <div
+          class="loading"
+          transition:fly={{
+            y: -200,
+            duration: sessionStorage.getItem('done') == '1' ? 0 : 2000,
+          }}
+        >
+          <Fa icon={faSpinner} size="3x" spin />
+          <h2>Loading...</h2>
+        </div>
+      {:then data}
+        <div
+          class="result"
+          transition:fly={{
+            y: 200,
+            duration: sessionStorage.getItem('done') == '1' ? 0 : 2000,
+          }}
+        >
+          {#if resultType == 'pokemon'}
+            <Pokemon {data} />
+          {:else if resultType == 'history'}
+            <History {data} />
+          {:else if resultType == 'pokedex'}
+            <Pokedex {data} />
+          {/if}
+        </div>
+      {/await}
+      <footer>
+        <p>
+          Made with <Fa icon={faHeart} /> by
+          <a href="https://diamant.dev">diamant</a>.
+        </p>
+        <p>
+          Pokedaily is not affiliated with Nintendo or Gamefreak Inc. - Pokémon
+          and Pokémon character names are trademarks of Nintendo.
+        </p>
+      </footer>
+    </div>
+  </main>
+</div>
 
 <style lang="scss">
   :global(*) {
@@ -99,9 +104,21 @@
     box-sizing: border-box;
   }
 
+  .app {
+    --primary: rgb(24, 24, 24);
+    --secondary: #eaeaea;
+    &.dark {
+      --primary: #eaeaea;
+      --secondary: rgb(24, 24, 24);
+    }
+    background-color: var(--secondary);
+    color: var(--primary);
+    min-height: 100vh;
+  }
+
   :global(::selection) {
-    background-color: rgb(24, 24, 24);
-    color: white;
+    background-color: var(--primary);
+    color: var(--secondary);
   }
 
   :global(body) {
@@ -129,21 +146,20 @@
     font-size: 24px;
     a {
       transform: skewX(10deg);
-      color: rgb(24, 24, 24);
+      color: var(--primary);
       text-decoration: none;
-      border: 0.1ch solid rgb(26, 26, 26);
-      color: black;
+      border: 0.1ch solid var(--primary);
       padding: 20px;
       transition: all 0.5s ease-in-out;
       box-shadow: rgba(0, 0, 0, 0.3) 2px 2px 6px 0px;
       &:hover {
-        background: rgb(26, 26, 26);
+        background: var(--primary);
         box-shadow: rgba(0, 0, 0, 0.3) 4px 4px 0px 0px;
-        color: white;
+        color: var(--secondary);
         & > span span {
           opacity: 1;
           transform: translate(8px, 50px) skewX(10deg);
-          color: black;
+          color: var(--primary);
         }
       }
       span {
@@ -159,7 +175,7 @@
           transform: skewX(10deg);
           position: absolute;
           opacity: 0;
-          color: white;
+          color: var(--primary);
         }
       }
     }
