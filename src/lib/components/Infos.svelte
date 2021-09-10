@@ -44,6 +44,10 @@
     &.leveling {
       background: var(--primary);
       color: var(--secondary);
+      ::selection {
+        background: var(--secondary);
+        color: var(--primary);
+      }
     }
     &.nature {
       border: 0.1ch solid var(--primary);
