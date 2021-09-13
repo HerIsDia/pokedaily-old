@@ -48,7 +48,7 @@
     img {
       width: 100px;
       &:not(.found) {
-        filter: brightness(0);
+        filter: grayscale(1) blur(5px) opacity(0.3);
       }
     }
   }
