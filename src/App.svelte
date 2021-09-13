@@ -29,6 +29,7 @@
       console.log('SW registration error', error);
     },
   });
+  const online = navigator.onLine;
   const dark = window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : '';
@@ -36,14 +37,14 @@
 
 <div class="app {dark}">
   <nav class="navbar">
-    {#if resultType != 'pokemon'}
-      <a href="#pokemon" on:click={() => (resultType = 'pokemon')}
-        ><span><Fa icon={faCalendar} /><span>Pokémon</span></span></a
-      >
-    {/if}
     {#if resultType != 'history'}
       <a href="#history" on:click={() => (resultType = 'history')}
         ><span><Fa icon={faHistory} /><span>History</span></span></a
+      >
+    {/if}
+    {#if resultType != 'pokemon'}
+      <a href="#pokemon" on:click={() => (resultType = 'pokemon')}
+        ><span><Fa icon={faCalendar} /><span>Pokémon</span></span></a
       >
     {/if}
     {#if resultType != 'pokedex'}
@@ -92,6 +93,14 @@
           Pokedaily is not affiliated with Nintendo or Gamefreak Inc. - Pokémon
           and Pokémon character names are trademarks of Nintendo.
         </p>
+        {#if !online}
+          <p>
+            <b>
+              You are offline. Pokedaily will not regenerate your pokemon of the
+              day.
+            </b>
+          </p>
+        {/if}
       </footer>
     </div>
   </main>
