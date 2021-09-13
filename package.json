@@ -1,6 +1,6 @@
 {
   "name": "pokedaily",
-  "version": "2.1",
+  "version": "2.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
