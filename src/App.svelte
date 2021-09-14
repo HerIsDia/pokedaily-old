@@ -21,7 +21,7 @@
       ? 'pokedex'
       : 'pokemon' || 'pokemon';
   console.log(window.location.hash.slice(1));
-  useRegisterSW({
+  const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
     onRegistered(swr) {
       console.log(`SW registered: ${swr}`);
     },
@@ -33,6 +33,9 @@
   const dark = window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : '';
+    if (needRefresh) {
+      updateServiceWorker(true);
+    }
 </script>
 
 <div class="app {dark}">
