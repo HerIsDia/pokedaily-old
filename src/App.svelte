@@ -21,7 +21,7 @@
       ? 'pokedex'
       : 'pokemon' || 'pokemon';
   console.log(window.location.hash.slice(1));
-  const { offlineReady, needRefresh, updateServiceWorker } = useRegisterSW({
+  const { needRefresh, updateServiceWorker } = useRegisterSW({
     onRegistered(swr) {
       console.log(`SW registered: ${swr}`);
     },
