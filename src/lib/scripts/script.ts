@@ -1,7 +1,7 @@
 import type { Nature, Pokemon, PokemonSpecies, Type } from 'pokenode-ts';
 import { getPokemonNature, getPokemonData, getPokemonTypes } from './pokeAPI';
 
-const version = '2.1.0';
+const version = '2.1.1';
 
 export interface AppData {
   _lastVersion: string;
