@@ -1,11 +1,7 @@
 <script lang="ts">
   import type { AppData } from '../scripts/script';
   export let data: AppData;
-  const allPokemons = [
-    data.pokemonOfTheDay.id,
-    ...data.history.map((p) => p.pokemon.id),
-  ];
-  const allPokemonFounds = [...new Set(allPokemons)];
+  const allPokemonFounds = data.pokedex;
   let pokemons: number[] = [];
   for (let index = 0; index < 898; index++) {
     pokemons.push(index + 1);

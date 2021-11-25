@@ -1,13 +1,14 @@
 import type { Nature, Pokemon, PokemonSpecies, Type } from 'pokenode-ts';
 import { getPokemonNature, getPokemonData, getPokemonTypes } from './pokeAPI';
 
-const version = '2.0.1';
+const version = '2.1.0';
 
 export interface AppData {
   _lastVersion: string;
   _lastDate: number;
   pokemonOfTheDay: PokemonData;
   history: HistoryData[];
+  pokedex: Number[];
 }
 
 interface PokemonData {
@@ -57,17 +58,26 @@ export const script = async () => {
           )) as Type)
         : null,
     ];
+    let dex = [];
     if (pokemonOfTheDay) {
+      dex = LocalData.pokedex ? LocalData.pokedex : [];
+      for (let index = 5; index < history.length; ) {
+        const a = history.shift();
+        dex.push(a.pokemon.id);
+      }
       history.push({
         _date: dateNow,
         pokemon: pokemonOfTheDay,
+      });
+      history.forEach((p) => {
+        dex.push(p.pokemon.id);
       });
     }
     pokemonOfTheDay = {
       id: randomPokemon,
       rename: '',
       natureID: randomNature,
-      level: Math.floor(Math.random() * 100),
+      level: Math.floor(Math.random() * 99) + 1,
       isShiny: Math.random() < 1 / 690,
       fetched: {
         pokemon: fetchedNewPokemon,
@@ -76,11 +86,13 @@ export const script = async () => {
       },
     };
     lastDay = dateNow;
+    dex.push(pokemonOfTheDay.id);
     const newData: AppData = {
       _lastVersion: version,
       _lastDate: lastDay,
       pokemonOfTheDay: pokemonOfTheDay,
       history: history,
+      pokedex: [...new Set(dex)],
     };
     localStorage.setItem('data', JSON.stringify(newData));
     sessionStorage.setItem('done', '0');
