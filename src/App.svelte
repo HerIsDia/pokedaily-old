@@ -96,6 +96,8 @@
           Pokedaily is not affiliated with Nintendo or Gamefreak Inc. - Pokémon
           and Pokémon character names are trademarks of Nintendo.
         </p>
+        <p>
+          Pokedaily will not support Legends Arceus, 9G or futur pokemon. The project as a website is no longer maintained. If you wanna take the code, go here: <a href="https://github.com/diamantdev/pokedaily">https://github.com/diamantdev/pokedaily</a>
         {#if !online}
           <p>
             <b>

@@ -1,7 +1,7 @@
 import type { Nature, Pokemon, PokemonSpecies, Type } from 'pokenode-ts';
 import { getPokemonNature, getPokemonData, getPokemonTypes } from './pokeAPI';
 
-const version = '2.1.1';
+const version = '2.1.2';
 
 export interface AppData {
   _lastVersion: string;
@@ -78,7 +78,7 @@ export const script = async () => {
       rename: '',
       natureID: randomNature,
       level: Math.floor(Math.random() * 99) + 1,
-      isShiny: Math.random() < 1 / 690,
+      isShiny: Math.random() < 1 / 69,
       fetched: {
         pokemon: fetchedNewPokemon,
         nature: fetchedNewNature,
