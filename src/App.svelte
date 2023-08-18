@@ -33,9 +33,9 @@
   const dark = window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : '';
-    if (needRefresh) {
-      updateServiceWorker(true);
-    }
+  if (needRefresh) {
+    updateServiceWorker(true);
+  }
 </script>
 
 <div class="app {dark}">
@@ -97,7 +97,12 @@
           and Pokémon character names are trademarks of Nintendo.
         </p>
         <p>
-          Pokedaily will not support Legends Arceus, 9G or futur pokemon. The project as a website is no longer maintained. If you wanna take the code, go here: <a href="https://github.com/diamantdev/pokedaily">https://github.com/diamantdev/pokedaily</a>
+          Surprise ! 9th gen pokemon are here ! Pokédaily v2 is in dev, no major
+          update will be on this version.
+        </p>
+        <p>
+          <a href="https://github.com/herisdia/pokedaily-old">Source code</a>
+        </p>
         {#if !online}
           <p>
             <b>

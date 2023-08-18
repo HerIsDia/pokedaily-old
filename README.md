@@ -2,12 +2,11 @@
 
 What pokemon are you today ?
 
-[![GitHub issues](https://img.shields.io/github/issues/diamantdev/pokedaily?logo=%23b69bc9&style=for-the-badge)](https://github.com/diamantdev/pokedaily/issues)
-[![GitHub forks](https://img.shields.io/github/forks/diamantdev/pokedaily?logo=b69bc9&style=for-the-badge)](https://github.com/diamantdev/pokedaily/network)
-[![GitHub stars](https://img.shields.io/github/stars/diamantdev/pokedaily?color=%23b69bc9&style=for-the-badge)](https://github.com/diamantdev/pokedaily/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/herisdia/pokedaily-old?logo=%23b69bc9&style=for-the-badge)](https://github.com/herisdia/pokedaily-old/issues)
+[![GitHub forks](https://img.shields.io/github/forks/herisdia/pokedaily-old?logo=b69bc9&style=for-the-badge)](https://github.com/herisdia/pokedaily-old/network)
+[![GitHub stars](https://img.shields.io/github/stars/herisdia/pokedaily-old?color=%23b69bc9&style=for-the-badge)](https://github.com/herisdia/pokedaily-old/stargazers)
 ![Website](https://img.shields.io/website?color=%23b69bc9&style=for-the-badge&url=https%3A%2F%2Fpokedaily.diams.app)
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N56FZOR)
-
 
 #### [Upvote it on ProductHunt !](https://www.producthunt.com/posts/pokedaily)
 
@@ -32,7 +31,7 @@ What pokemon are you today ?
 Clone the project
 
 ```bash
-  git clone https://github.com/diamantdev/pokedaily pokedaily
+  git clone https://github.com/herisdia/pokedaily-old pokedaily
 ```
 
 Go to the project directory
@@ -55,7 +54,7 @@ Start the server
 
 ## Browse source code.
 
-You can browse this repo in a browser based VSCode experience [here](https://github.dev/diamantdev/pokedaily), or by pressing `.`
+You can browse this repo in a browser based VSCode experience [here](https://github.dev/herisdia/pokedaily-old), or by pressing `.`
 at any moment in this repo.
 
 ## Note.
@@ -64,6 +63,10 @@ Pokedaily is not affiliated with Nintendo or Gamefreak Inc.
 
 Pokémon and Pokémon character names are trademarks of Nintendo.
 
+A new v2 is coming soon, with a new design and new features. Stay tuned !
+
+This repo is semi archived, and no new features will be added to this version.
+
 ## Authors
 
-- [@diamantdotdev](https://www.github.com/diamantdotdev)
+- [@herisdia](https://www.github.com/herisdia)
